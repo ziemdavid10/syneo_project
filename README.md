@@ -1,66 +1,46 @@
-# Sineo — site vitrine
+# SYNEO — site vitrine (version simple)
 
-Site vitrine de **Sineo** : vulgarisation tech, conférences, partenariats et networking.
+Version vitrine classique du site SYNEO, demandée après la revue de la V1 :
+« rendre le site light, à l'image de celui de l'IAC ».
+La V1 (`ryantchuisseu/syneo-site-web`) n'est pas modifiée.
 
-- **Stack** : HTML / CSS / JavaScript statiques, sans build.
-- **Langues** : FR d'abord, EN prévu (voir [Internationalisation](#internationalisation)).
-- **Statut** : squelette de l'accueil en place, les autres pages sont suivies dans les issues.
+## Ce qui change par rapport à la V1
 
-## Démarrage rapide
-
-```bash
-git clone git@github.com:ryantchuisseu/syneo.git
-cd syneo
-python3 -m http.server 8000   # puis http://localhost:8000
-```
-
-N'importe quel serveur statique fait l'affaire (`npx serve`, extension Live Server…).
-
-## Arborescence
-
-```
-syneo/
-├── index.html              # Accueil
-├── css/
-│   ├── tokens.css          # Charte : couleurs, typo, espacements, rayons, ombres
-│   ├── base.css            # Reset + styles globaux (s'appuie sur tokens.css)
-│   └── components.css      # Header, boutons, cartes, sections, footer
-├── js/
-│   └── main.js             # Menu mobile, année du footer
-├── assets/img/             # Images, logos, favicon
-├── scripts/
-│   └── create-issues.sh    # Crée les issues "une par page" via gh
-└── .github/                # Modèles d'issue et de PR
-```
-
-## Pages prévues
-
-| Page | Fichier | Issue |
+| | V1 (syneo-site-web) | Version simple |
 |---|---|---|
-| Accueil | `index.html` | Page : Accueil |
-| Vulgarisation | `vulgarisation.html` | Page : Vulgarisation |
-| Conférences | `conferences.html` | Page : Conférences |
-| Partenariats | `partenariats.html` | Page : Partenariats |
-| Networking | `networking.html` | Page : Networking |
-| À propos | `a-propos.html` | Page : À propos |
-| Contact | `contact.html` | Page : Contact |
+| Style | Éditorial, portail média, scènes immersives | **Vitrine classique** : bandeau d'accueil, sections, cartes |
+| Animations | 9 (prisme 3D, film plein écran, roue, texte qui s'allume…) | **Aucune** |
+| Polices | 4 | **1** (Figtree) |
+| Pages | 1 fichier, pages par ancres (`#programme`) | **7 vraies pages HTML** |
+| Film (3,2 Mo) | Lecture automatique | **Chargé au clic** |
+| Contenu | — | **Repris de la V1** (textes, chiffres, équipe, partenaires, paliers) |
 
-## Charte graphique
+Conservé : compte à rebours du 18 novembre, onglets des 6 conférences, filtre des actualités par rubrique,
+formulaires qui préparent un message WhatsApp, boutons « Copier », bouton WhatsApp fixe.
 
-Toutes les valeurs de design vivent dans **`css/tokens.css`** (custom properties CSS).
+## Fichiers
 
-- **Ne jamais** écrire une couleur, une taille de police ou un espacement en dur ailleurs : utiliser `var(--…)`.
-- Changer la charte = modifier `tokens.css` uniquement.
-- Le mode sombre est géré dans ce même fichier (`prefers-color-scheme`).
+```
+index.html          Accueil
+actualites.html     Actualités (filtre par rubrique)
+prisme.html         Le programme PRISME (7 étapes + conférences en onglets)
+a-propos.html       Qui sommes-nous (mission, principes, valeurs, équipe)
+partenaires.html    Partenaires + paliers de sponsoring
+contribuer.html     Proposer un contenu (formulaire → WhatsApp)
+contact.html        Contact (formulaire → WhatsApp, coordonnées)
+assets/style.css    Styles communs
+assets/main.js      Scripts communs (menu, compte à rebours, formulaires, onglets, filtre)
+assets/             Logo, favicon, film et son image d'attente
+```
 
-## Internationalisation
+## À fournir par le client
 
-Prévu plus tard, convention retenue dès maintenant :
+- **Photos** d'événements ou de l'équipe (le bandeau d'accueil peut en accueillir une, comme sur le site de l'IAC).
+- **Logos** des partenaires (affichés pour l'instant en texte).
+- **Vrais articles** pour la page Actualités (ceux en place sont des exemples).
+- Confirmation des **montants de sponsoring** (5 M à 30 M FCFA).
 
-- FR à la racine (`/index.html`), EN sous `/en/` (`/en/index.html`).
-- Attribut `lang` correct sur chaque page, liens `hreflang` dans le `<head>`.
-- Aucun texte dans le JS : tout le contenu reste dans le HTML.
+## Voir / mettre en ligne
 
-## Contribuer
-
-Une branche par tâche, PR obligatoire : voir **[CONTRIBUTING.md](CONTRIBUTING.md)**.
+- Ouvrir `index.html` dans un navigateur (connexion Internet nécessaire pour la police).
+- Vercel, Netlify, GitHub Pages ou hébergeur classique : déposer le dossier tel quel, aucune compilation.
